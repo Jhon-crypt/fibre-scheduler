@@ -1,10 +1,10 @@
-Start testing: Jun 28 20:48 WAT
+Start testing: Jun 28 20:55 WAT
 ----------------------------------------------------------
 1/4 Testing: test_context
 1/4 Test: test_context
 Command: "/Users/john/fibre-scheduler/build/fibers/test_context"
 Directory: /Users/john/fibre-scheduler/build/fibers
-"test_context" start time: Jun 28 20:48 WAT
+"test_context" start time: Jun 28 20:55 WAT
 Output:
 ----------------------------------------------------------
 Test 1: Basic context switching
@@ -15,10 +15,10 @@ Test 2: Context switching between functions
 Executing foo()
 Back in main()
 <end of output>
-Test time =   0.25 sec
+Test time =   0.67 sec
 ----------------------------------------------------------
 Test Passed.
-"test_context" end time: Jun 28 20:48 WAT
+"test_context" end time: Jun 28 20:55 WAT
 "test_context" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -26,7 +26,7 @@ Test Passed.
 2/4 Test: test_suite
 Command: "/Users/john/fibre-scheduler/build/fibers/test_suite"
 Directory: /Users/john/fibre-scheduler/build/fibers
-"test_suite" start time: Jun 28 20:48 WAT
+"test_suite" start time: Jun 28 20:55 WAT
 Output:
 ----------------------------------------------------------
 
@@ -49,10 +49,10 @@ fiber 1 before
 fiber 1 after
 fiber 2
 <end of output>
-Test time =   0.51 sec
+Test time =   0.24 sec
 ----------------------------------------------------------
 Test Passed.
-"test_suite" end time: Jun 28 20:48 WAT
+"test_suite" end time: Jun 28 20:55 WAT
 "test_suite" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -60,7 +60,7 @@ Test Passed.
 3/4 Test: test_my_string
 Command: "/Users/john/fibre-scheduler/build/my_string/test_my_string"
 Directory: /Users/john/fibre-scheduler/build/my_string
-"test_my_string" start time: Jun 28 20:48 WAT
+"test_my_string" start time: Jun 28 20:55 WAT
 Output:
 ----------------------------------------------------------
 
@@ -91,7 +91,7 @@ Final ref count: 1
 Test time =   0.23 sec
 ----------------------------------------------------------
 Test Passed.
-"test_my_string" end time: Jun 28 20:48 WAT
+"test_my_string" end time: Jun 28 20:55 WAT
 "test_my_string" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -99,7 +99,7 @@ Test Passed.
 4/4 Test: test_bump_allocator
 Command: "/Users/john/fibre-scheduler/build/allocator/test_bump_allocator"
 Directory: /Users/john/fibre-scheduler/build/allocator
-"test_bump_allocator" start time: Jun 28 20:48 WAT
+"test_bump_allocator" start time: Jun 28 20:55 WAT
 Output:
 ----------------------------------------------------------
 
@@ -114,15 +114,15 @@ Dealloc and reset test passed
 
 === Test 6.1: Benchmark Allocations ===
 Benchmark results for 1000 iterations:
-Small allocations (8 bytes): 18 µs
-Medium allocations (64 bytes): 18 µs
-Large allocations (512 bytes): 18 µs
+Small allocations (8 bytes): 20 µs
+Medium allocations (64 bytes): 21 µs
+Large allocations (512 bytes): 33 µs
 <end of output>
-Test time =   0.23 sec
+Test time =   0.25 sec
 ----------------------------------------------------------
 Test Passed.
-"test_bump_allocator" end time: Jun 28 20:48 WAT
+"test_bump_allocator" end time: Jun 28 20:55 WAT
 "test_bump_allocator" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Jun 28 20:48 WAT
+End testing: Jun 28 20:55 WAT
