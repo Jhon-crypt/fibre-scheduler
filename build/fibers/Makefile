@@ -140,6 +140,20 @@ test_context/fast:
 	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_context.dir/build.make fibers/CMakeFiles/test_context.dir/build
 .PHONY : test_context/fast
 
+# Convenience name for target.
+fibers/CMakeFiles/test_suite.dir/rule:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fibers/CMakeFiles/test_suite.dir/rule
+.PHONY : fibers/CMakeFiles/test_suite.dir/rule
+
+# Convenience name for target.
+test_suite: fibers/CMakeFiles/test_suite.dir/rule
+.PHONY : test_suite
+
+# fast build rule for target.
+test_suite/fast:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_suite.dir/build.make fibers/CMakeFiles/test_suite.dir/build
+.PHONY : test_suite/fast
+
 test_context.o: test_context.cpp.o
 .PHONY : test_context.o
 
@@ -164,6 +178,30 @@ test_context.cpp.s:
 	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_context.dir/build.make fibers/CMakeFiles/test_context.dir/test_context.cpp.s
 .PHONY : test_context.cpp.s
 
+test_suite.o: test_suite.cpp.o
+.PHONY : test_suite.o
+
+# target to build an object file
+test_suite.cpp.o:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_suite.dir/build.make fibers/CMakeFiles/test_suite.dir/test_suite.cpp.o
+.PHONY : test_suite.cpp.o
+
+test_suite.i: test_suite.cpp.i
+.PHONY : test_suite.i
+
+# target to preprocess a source file
+test_suite.cpp.i:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_suite.dir/build.make fibers/CMakeFiles/test_suite.dir/test_suite.cpp.i
+.PHONY : test_suite.cpp.i
+
+test_suite.s: test_suite.cpp.s
+.PHONY : test_suite.s
+
+# target to generate assembly for a file
+test_suite.cpp.s:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_suite.dir/build.make fibers/CMakeFiles/test_suite.dir/test_suite.cpp.s
+.PHONY : test_suite.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -174,9 +212,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... test_context"
+	@echo "... test_suite"
 	@echo "... test_context.o"
 	@echo "... test_context.i"
 	@echo "... test_context.s"
+	@echo "... test_suite.o"
+	@echo "... test_suite.i"
+	@echo "... test_suite.s"
 .PHONY : help
 
 

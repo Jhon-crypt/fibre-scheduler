@@ -1,0 +1,128 @@
+Start testing: Jun 28 20:48 WAT
+----------------------------------------------------------
+1/4 Testing: test_context
+1/4 Test: test_context
+Command: "/Users/john/fibre-scheduler/build/fibers/test_context"
+Directory: /Users/john/fibre-scheduler/build/fibers
+"test_context" start time: Jun 28 20:48 WAT
+Output:
+----------------------------------------------------------
+Test 1: Basic context switching
+Before context switch, x = 1
+After context switch, x = 1
+
+Test 2: Context switching between functions
+Executing foo()
+Back in main()
+<end of output>
+Test time =   0.25 sec
+----------------------------------------------------------
+Test Passed.
+"test_context" end time: Jun 28 20:48 WAT
+"test_context" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/4 Testing: test_suite
+2/4 Test: test_suite
+Command: "/Users/john/fibre-scheduler/build/fibers/test_suite"
+Directory: /Users/john/fibre-scheduler/build/fibers
+"test_suite" start time: Jun 28 20:48 WAT
+Output:
+----------------------------------------------------------
+
+=== Test 1.1: Save and Restore Context ===
+Message
+
+=== Test 1.2: Jump to Function ===
+you called foo
+
+=== Test 2.1: Two Functions Sequential ===
+fiber 1
+fiber 2
+
+=== Test 2.2: Function with Data ===
+fiber 1: 10
+fiber 2: 11
+
+=== Test 3.1: Function Sequence ===
+fiber 1 before
+fiber 1 after
+fiber 2
+<end of output>
+Test time =   0.51 sec
+----------------------------------------------------------
+Test Passed.
+"test_suite" end time: Jun 28 20:48 WAT
+"test_suite" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/4 Testing: test_my_string
+3/4 Test: test_my_string
+Command: "/Users/john/fibre-scheduler/build/my_string/test_my_string"
+Directory: /Users/john/fibre-scheduler/build/my_string
+"test_my_string" start time: Jun 28 20:48 WAT
+Output:
+----------------------------------------------------------
+
+=== Test 4.1: my_string Sharing and Scope ===
+[1]
+[2]
+Reference count inside scope: 2
+[1]
+Reference count after scope: 1
+HEllo world
+[0]
+
+=== Test 4.2: Reference Count Hits 0 ===
+[1]
+[2]
+Reference count after copy: 2
+[1]
+Reference count before delete: 1
+[0]
+
+=== Test 4.3: Template Wrapper ===
+Initial ref count: 1
+Ref count after copy: 2
+p1.x = 10, p2.x = 30
+Ref count after modification: 1
+Final ref count: 1
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"test_my_string" end time: Jun 28 20:48 WAT
+"test_my_string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/4 Testing: test_bump_allocator
+4/4 Test: test_bump_allocator
+Command: "/Users/john/fibre-scheduler/build/allocator/test_bump_allocator"
+Directory: /Users/john/fibre-scheduler/build/allocator
+"test_bump_allocator" start time: Jun 28 20:48 WAT
+Output:
+----------------------------------------------------------
+
+=== Test 5.1: Allocate and Use Objects ===
+Basic allocation test passed
+
+=== Test 5.2: Over-Allocation Returns nullptr ===
+Over-allocation test passed
+
+=== Test 5.3: Dealloc + Reset ===
+Dealloc and reset test passed
+
+=== Test 6.1: Benchmark Allocations ===
+Benchmark results for 1000 iterations:
+Small allocations (8 bytes): 18 µs
+Medium allocations (64 bytes): 18 µs
+Large allocations (512 bytes): 18 µs
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"test_bump_allocator" end time: Jun 28 20:48 WAT
+"test_bump_allocator" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 28 20:48 WAT

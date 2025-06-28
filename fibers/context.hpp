@@ -4,6 +4,12 @@
 #include <csetjmp>
 #include <cstdint>
 
+#ifdef _WIN32
+#define NORETURN __declspec(noreturn)
+#else
+#define NORETURN [[noreturn]]
+#endif
+
 struct Context {
     std::jmp_buf env;
 };
@@ -14,7 +20,7 @@ inline int get_context(Context* ctx) {
 }
 
 // Load context from ctx
-[[noreturn]] inline void set_context(Context* ctx) {
+NORETURN inline void set_context(Context* ctx) {
     longjmp(ctx->env, 1);
 }
 

@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
-project(fibre-scheduler VERSION 1.0.0 LANGUAGES CXX ASM)
+project(fibre-scheduler CXX)
 
 # Set C++17 standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Enable testing
 enable_testing()

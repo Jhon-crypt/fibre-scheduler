@@ -140,6 +140,45 @@ test_context/fast:
 .PHONY : test_context/fast
 
 #=============================================================================
+# Target rules for targets named test_suite
+
+# Build rule for target.
+test_suite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_suite
+.PHONY : test_suite
+
+# fast build rule for target.
+test_suite/fast:
+	$(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_suite.dir/build.make fibers/CMakeFiles/test_suite.dir/build
+.PHONY : test_suite/fast
+
+#=============================================================================
+# Target rules for targets named test_my_string
+
+# Build rule for target.
+test_my_string: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_my_string
+.PHONY : test_my_string
+
+# fast build rule for target.
+test_my_string/fast:
+	$(MAKE) $(MAKESILENT) -f my_string/CMakeFiles/test_my_string.dir/build.make my_string/CMakeFiles/test_my_string.dir/build
+.PHONY : test_my_string/fast
+
+#=============================================================================
+# Target rules for targets named test_bump_allocator
+
+# Build rule for target.
+test_bump_allocator: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_bump_allocator
+.PHONY : test_bump_allocator
+
+# fast build rule for target.
+test_bump_allocator/fast:
+	$(MAKE) $(MAKESILENT) -f allocator/CMakeFiles/test_bump_allocator.dir/build.make allocator/CMakeFiles/test_bump_allocator.dir/build
+.PHONY : test_bump_allocator/fast
+
+#=============================================================================
 # Target rules for targets named tests
 
 # Build rule for target.
@@ -162,7 +201,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... tests"
+	@echo "... test_bump_allocator"
 	@echo "... test_context"
+	@echo "... test_my_string"
+	@echo "... test_suite"
 .PHONY : help
 
 

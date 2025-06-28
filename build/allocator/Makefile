@@ -126,6 +126,44 @@ depend:
 	cd /Users/john/fibre-scheduler/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+allocator/CMakeFiles/test_bump_allocator.dir/rule:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 allocator/CMakeFiles/test_bump_allocator.dir/rule
+.PHONY : allocator/CMakeFiles/test_bump_allocator.dir/rule
+
+# Convenience name for target.
+test_bump_allocator: allocator/CMakeFiles/test_bump_allocator.dir/rule
+.PHONY : test_bump_allocator
+
+# fast build rule for target.
+test_bump_allocator/fast:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f allocator/CMakeFiles/test_bump_allocator.dir/build.make allocator/CMakeFiles/test_bump_allocator.dir/build
+.PHONY : test_bump_allocator/fast
+
+test_bump_allocator.o: test_bump_allocator.cpp.o
+.PHONY : test_bump_allocator.o
+
+# target to build an object file
+test_bump_allocator.cpp.o:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f allocator/CMakeFiles/test_bump_allocator.dir/build.make allocator/CMakeFiles/test_bump_allocator.dir/test_bump_allocator.cpp.o
+.PHONY : test_bump_allocator.cpp.o
+
+test_bump_allocator.i: test_bump_allocator.cpp.i
+.PHONY : test_bump_allocator.i
+
+# target to preprocess a source file
+test_bump_allocator.cpp.i:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f allocator/CMakeFiles/test_bump_allocator.dir/build.make allocator/CMakeFiles/test_bump_allocator.dir/test_bump_allocator.cpp.i
+.PHONY : test_bump_allocator.cpp.i
+
+test_bump_allocator.s: test_bump_allocator.cpp.s
+.PHONY : test_bump_allocator.s
+
+# target to generate assembly for a file
+test_bump_allocator.cpp.s:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f allocator/CMakeFiles/test_bump_allocator.dir/build.make allocator/CMakeFiles/test_bump_allocator.dir/test_bump_allocator.cpp.s
+.PHONY : test_bump_allocator.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -135,6 +173,10 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... test_bump_allocator"
+	@echo "... test_bump_allocator.o"
+	@echo "... test_bump_allocator.i"
+	@echo "... test_bump_allocator.s"
 .PHONY : help
 
 

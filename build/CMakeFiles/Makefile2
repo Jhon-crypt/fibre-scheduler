@@ -94,11 +94,11 @@ clean: tests/clean
 # Directory level rules for directory allocator
 
 # Recursive "all" directory target.
-allocator/all:
+allocator/all: allocator/CMakeFiles/test_bump_allocator.dir/all
 .PHONY : allocator/all
 
 # Recursive "codegen" directory target.
-allocator/codegen:
+allocator/codegen: allocator/CMakeFiles/test_bump_allocator.dir/codegen
 .PHONY : allocator/codegen
 
 # Recursive "preinstall" directory target.
@@ -106,7 +106,7 @@ allocator/preinstall:
 .PHONY : allocator/preinstall
 
 # Recursive "clean" directory target.
-allocator/clean:
+allocator/clean: allocator/CMakeFiles/test_bump_allocator.dir/clean
 .PHONY : allocator/clean
 
 #=============================================================================
@@ -114,10 +114,12 @@ allocator/clean:
 
 # Recursive "all" directory target.
 fibers/all: fibers/CMakeFiles/test_context.dir/all
+fibers/all: fibers/CMakeFiles/test_suite.dir/all
 .PHONY : fibers/all
 
 # Recursive "codegen" directory target.
 fibers/codegen: fibers/CMakeFiles/test_context.dir/codegen
+fibers/codegen: fibers/CMakeFiles/test_suite.dir/codegen
 .PHONY : fibers/codegen
 
 # Recursive "preinstall" directory target.
@@ -126,17 +128,18 @@ fibers/preinstall:
 
 # Recursive "clean" directory target.
 fibers/clean: fibers/CMakeFiles/test_context.dir/clean
+fibers/clean: fibers/CMakeFiles/test_suite.dir/clean
 .PHONY : fibers/clean
 
 #=============================================================================
 # Directory level rules for directory my_string
 
 # Recursive "all" directory target.
-my_string/all:
+my_string/all: my_string/CMakeFiles/test_my_string.dir/all
 .PHONY : my_string/all
 
 # Recursive "codegen" directory target.
-my_string/codegen:
+my_string/codegen: my_string/CMakeFiles/test_my_string.dir/codegen
 .PHONY : my_string/codegen
 
 # Recursive "preinstall" directory target.
@@ -144,7 +147,7 @@ my_string/preinstall:
 .PHONY : my_string/preinstall
 
 # Recursive "clean" directory target.
-my_string/clean:
+my_string/clean: my_string/CMakeFiles/test_my_string.dir/clean
 .PHONY : my_string/clean
 
 #=============================================================================
@@ -173,7 +176,7 @@ tests/clean: tests/CMakeFiles/tests.dir/clean
 fibers/CMakeFiles/test_context.dir/all:
 	$(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_context.dir/build.make fibers/CMakeFiles/test_context.dir/depend
 	$(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_context.dir/build.make fibers/CMakeFiles/test_context.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/john/fibre-scheduler/build/CMakeFiles --progress-num=1,2 "Built target test_context"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/john/fibre-scheduler/build/CMakeFiles --progress-num=3,4 "Built target test_context"
 .PHONY : fibers/CMakeFiles/test_context.dir/all
 
 # Build rule for subdir invocation for target.
@@ -196,6 +199,99 @@ fibers/CMakeFiles/test_context.dir/codegen:
 fibers/CMakeFiles/test_context.dir/clean:
 	$(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_context.dir/build.make fibers/CMakeFiles/test_context.dir/clean
 .PHONY : fibers/CMakeFiles/test_context.dir/clean
+
+#=============================================================================
+# Target rules for target fibers/CMakeFiles/test_suite.dir
+
+# All Build rule for target.
+fibers/CMakeFiles/test_suite.dir/all:
+	$(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_suite.dir/build.make fibers/CMakeFiles/test_suite.dir/depend
+	$(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_suite.dir/build.make fibers/CMakeFiles/test_suite.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/john/fibre-scheduler/build/CMakeFiles --progress-num=7,8 "Built target test_suite"
+.PHONY : fibers/CMakeFiles/test_suite.dir/all
+
+# Build rule for subdir invocation for target.
+fibers/CMakeFiles/test_suite.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/john/fibre-scheduler/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fibers/CMakeFiles/test_suite.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/john/fibre-scheduler/build/CMakeFiles 0
+.PHONY : fibers/CMakeFiles/test_suite.dir/rule
+
+# Convenience name for target.
+test_suite: fibers/CMakeFiles/test_suite.dir/rule
+.PHONY : test_suite
+
+# codegen rule for target.
+fibers/CMakeFiles/test_suite.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_suite.dir/build.make fibers/CMakeFiles/test_suite.dir/codegen
+.PHONY : fibers/CMakeFiles/test_suite.dir/codegen
+
+# clean rule for target.
+fibers/CMakeFiles/test_suite.dir/clean:
+	$(MAKE) $(MAKESILENT) -f fibers/CMakeFiles/test_suite.dir/build.make fibers/CMakeFiles/test_suite.dir/clean
+.PHONY : fibers/CMakeFiles/test_suite.dir/clean
+
+#=============================================================================
+# Target rules for target my_string/CMakeFiles/test_my_string.dir
+
+# All Build rule for target.
+my_string/CMakeFiles/test_my_string.dir/all:
+	$(MAKE) $(MAKESILENT) -f my_string/CMakeFiles/test_my_string.dir/build.make my_string/CMakeFiles/test_my_string.dir/depend
+	$(MAKE) $(MAKESILENT) -f my_string/CMakeFiles/test_my_string.dir/build.make my_string/CMakeFiles/test_my_string.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/john/fibre-scheduler/build/CMakeFiles --progress-num=5,6 "Built target test_my_string"
+.PHONY : my_string/CMakeFiles/test_my_string.dir/all
+
+# Build rule for subdir invocation for target.
+my_string/CMakeFiles/test_my_string.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/john/fibre-scheduler/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_string/CMakeFiles/test_my_string.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/john/fibre-scheduler/build/CMakeFiles 0
+.PHONY : my_string/CMakeFiles/test_my_string.dir/rule
+
+# Convenience name for target.
+test_my_string: my_string/CMakeFiles/test_my_string.dir/rule
+.PHONY : test_my_string
+
+# codegen rule for target.
+my_string/CMakeFiles/test_my_string.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f my_string/CMakeFiles/test_my_string.dir/build.make my_string/CMakeFiles/test_my_string.dir/codegen
+.PHONY : my_string/CMakeFiles/test_my_string.dir/codegen
+
+# clean rule for target.
+my_string/CMakeFiles/test_my_string.dir/clean:
+	$(MAKE) $(MAKESILENT) -f my_string/CMakeFiles/test_my_string.dir/build.make my_string/CMakeFiles/test_my_string.dir/clean
+.PHONY : my_string/CMakeFiles/test_my_string.dir/clean
+
+#=============================================================================
+# Target rules for target allocator/CMakeFiles/test_bump_allocator.dir
+
+# All Build rule for target.
+allocator/CMakeFiles/test_bump_allocator.dir/all:
+	$(MAKE) $(MAKESILENT) -f allocator/CMakeFiles/test_bump_allocator.dir/build.make allocator/CMakeFiles/test_bump_allocator.dir/depend
+	$(MAKE) $(MAKESILENT) -f allocator/CMakeFiles/test_bump_allocator.dir/build.make allocator/CMakeFiles/test_bump_allocator.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/john/fibre-scheduler/build/CMakeFiles --progress-num=1,2 "Built target test_bump_allocator"
+.PHONY : allocator/CMakeFiles/test_bump_allocator.dir/all
+
+# Build rule for subdir invocation for target.
+allocator/CMakeFiles/test_bump_allocator.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/john/fibre-scheduler/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 allocator/CMakeFiles/test_bump_allocator.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/john/fibre-scheduler/build/CMakeFiles 0
+.PHONY : allocator/CMakeFiles/test_bump_allocator.dir/rule
+
+# Convenience name for target.
+test_bump_allocator: allocator/CMakeFiles/test_bump_allocator.dir/rule
+.PHONY : test_bump_allocator
+
+# codegen rule for target.
+allocator/CMakeFiles/test_bump_allocator.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f allocator/CMakeFiles/test_bump_allocator.dir/build.make allocator/CMakeFiles/test_bump_allocator.dir/codegen
+.PHONY : allocator/CMakeFiles/test_bump_allocator.dir/codegen
+
+# clean rule for target.
+allocator/CMakeFiles/test_bump_allocator.dir/clean:
+	$(MAKE) $(MAKESILENT) -f allocator/CMakeFiles/test_bump_allocator.dir/build.make allocator/CMakeFiles/test_bump_allocator.dir/clean
+.PHONY : allocator/CMakeFiles/test_bump_allocator.dir/clean
 
 #=============================================================================
 # Target rules for target tests/CMakeFiles/tests.dir

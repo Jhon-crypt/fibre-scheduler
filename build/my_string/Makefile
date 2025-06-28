@@ -126,6 +126,44 @@ depend:
 	cd /Users/john/fibre-scheduler/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+my_string/CMakeFiles/test_my_string.dir/rule:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_string/CMakeFiles/test_my_string.dir/rule
+.PHONY : my_string/CMakeFiles/test_my_string.dir/rule
+
+# Convenience name for target.
+test_my_string: my_string/CMakeFiles/test_my_string.dir/rule
+.PHONY : test_my_string
+
+# fast build rule for target.
+test_my_string/fast:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f my_string/CMakeFiles/test_my_string.dir/build.make my_string/CMakeFiles/test_my_string.dir/build
+.PHONY : test_my_string/fast
+
+test_my_string.o: test_my_string.cpp.o
+.PHONY : test_my_string.o
+
+# target to build an object file
+test_my_string.cpp.o:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f my_string/CMakeFiles/test_my_string.dir/build.make my_string/CMakeFiles/test_my_string.dir/test_my_string.cpp.o
+.PHONY : test_my_string.cpp.o
+
+test_my_string.i: test_my_string.cpp.i
+.PHONY : test_my_string.i
+
+# target to preprocess a source file
+test_my_string.cpp.i:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f my_string/CMakeFiles/test_my_string.dir/build.make my_string/CMakeFiles/test_my_string.dir/test_my_string.cpp.i
+.PHONY : test_my_string.cpp.i
+
+test_my_string.s: test_my_string.cpp.s
+.PHONY : test_my_string.s
+
+# target to generate assembly for a file
+test_my_string.cpp.s:
+	cd /Users/john/fibre-scheduler/build && $(MAKE) $(MAKESILENT) -f my_string/CMakeFiles/test_my_string.dir/build.make my_string/CMakeFiles/test_my_string.dir/test_my_string.cpp.s
+.PHONY : test_my_string.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -135,6 +173,10 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... test_my_string"
+	@echo "... test_my_string.o"
+	@echo "... test_my_string.i"
+	@echo "... test_my_string.s"
 .PHONY : help
 
 
