@@ -11,6 +11,14 @@
 #endif
 
 struct Context {
+    void* rip;  // Instruction pointer
+    void* rsp;  // Stack pointer
+    void* rbp;  // Base pointer
+    void* rbx;  // Callee-saved registers
+    void* r12;
+    void* r13;
+    void* r14;
+    void* r15;
     std::jmp_buf env;
 };
 

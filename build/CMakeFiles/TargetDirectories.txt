@@ -18,3 +18,9 @@
 /Users/john/fibre-scheduler/build/tests/CMakeFiles/test.dir
 /Users/john/fibre-scheduler/build/tests/CMakeFiles/edit_cache.dir
 /Users/john/fibre-scheduler/build/tests/CMakeFiles/rebuild_cache.dir
+/Users/john/fibre-scheduler/build/examples/CMakeFiles/task1.dir
+/Users/john/fibre-scheduler/build/examples/CMakeFiles/task2.dir
+/Users/john/fibre-scheduler/build/examples/CMakeFiles/task3.dir
+/Users/john/fibre-scheduler/build/examples/CMakeFiles/test.dir
+/Users/john/fibre-scheduler/build/examples/CMakeFiles/edit_cache.dir
+/Users/john/fibre-scheduler/build/examples/CMakeFiles/rebuild_cache.dir

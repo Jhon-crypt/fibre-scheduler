@@ -1,5 +1,5 @@
-test_context 1 0.67065
-test_suite 1 0.235924
-test_my_string 1 0.225598
-test_bump_allocator 1 0.247166
+test_context 2 0.0125195
+test_suite 2 0.00440556
+test_my_string 2 0.00485379
+test_bump_allocator 2 0.00249675
 ---

@@ -13,6 +13,7 @@ add_subdirectory(fibers)
 add_subdirectory(my_string)
 add_subdirectory(allocator)
 add_subdirectory(tests)
+add_subdirectory(examples)
 
 # Set compiler flags
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")

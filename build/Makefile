@@ -191,6 +191,45 @@ tests/fast:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/build
 .PHONY : tests/fast
 
+#=============================================================================
+# Target rules for targets named task1
+
+# Build rule for target.
+task1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 task1
+.PHONY : task1
+
+# fast build rule for target.
+task1/fast:
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/task1.dir/build.make examples/CMakeFiles/task1.dir/build
+.PHONY : task1/fast
+
+#=============================================================================
+# Target rules for targets named task2
+
+# Build rule for target.
+task2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 task2
+.PHONY : task2
+
+# fast build rule for target.
+task2/fast:
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/task2.dir/build.make examples/CMakeFiles/task2.dir/build
+.PHONY : task2/fast
+
+#=============================================================================
+# Target rules for targets named task3
+
+# Build rule for target.
+task3: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 task3
+.PHONY : task3
+
+# fast build rule for target.
+task3/fast:
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/task3.dir/build.make examples/CMakeFiles/task3.dir/build
+.PHONY : task3/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -201,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... tests"
+	@echo "... task1"
+	@echo "... task2"
+	@echo "... task3"
 	@echo "... test_bump_allocator"
 	@echo "... test_context"
 	@echo "... test_my_string"
