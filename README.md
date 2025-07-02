@@ -1,300 +1,191 @@
-# Fiber Scheduler
+# Fiber Scheduler Implementation
 
-A lightweight C++17 fiber scheduler implementation for cooperative multitasking, using setjmp/longjmp for portable context switching.
+## Table of contents:
 
-## Features
+- [Task 1](#task-1)
+  - [Overview](#task-1-overview)
+  - [Main Implementation](#task-1-main-implementation)
+  - [Output & Observations](#task-1-output--observations)
+- [Task 2](#task-2)
+  - [Overview](#task-2-overview)
+  - [Implementation](#task-2-implementation)
+  - [Output & Observations](#task-2-output--observations)
+- [Task 3](#task-3)
+  - [Overview](#task-3-overview)
+  - [Implementation](#task-3-implementation)
+  - [Output & Observations](#task-3-output--observations)
 
-- Lightweight context switching using standard C++ library (setjmp/longjmp)
-- Cross-platform support (Windows, macOS, Linux)
-- Works on multiple architectures (x86_64, ARM64)
-- Header-only implementation
-- C++17 compliant
-- Reference-counted string with copy-on-write
-- Template-based reference counting wrapper
-- Efficient bump allocator
+## Project Overview
 
-## Requirements
+This project aims to implement a fiber scheduler using cooperative multitasking with custom context management. Fibers, lightweight cooperative threads, are scheduled and executed in a non-preemptive manner. This README provides an overview of the code structure and highlights key features in the implementation that contributes to the functionality of the program.
 
-- C++17 compatible compiler:
-  - Windows: MSVC, MinGW-w64, or Clang
-  - macOS: Clang++
-  - Linux: GCC or Clang++
-- Standard C++ library
-- CMake 3.15+ (if building with CMake)
+## Task 1
 
-## Building and Running Tests
+### Task 1 Overview
 
-### Using CMake (Recommended for all platforms)
+Task 1 implements a basic context switching mechanism using the `Context` library. It demonstrates the fundamental concepts of saving and restoring execution contexts.
 
-```bash
-mkdir build
-cd build
-cmake ..
-```
+### Main Implementation
 
-Then:
-- On Unix-like systems (macOS/Linux):
-  ```bash
-  make
-  ```
-- On Windows with MSVC:
-  ```bash
-  cmake --build .
-  ```
+#### Data Structures
+- **Context Object**: A `Context` object is used to store the program state
+- **State Variable**: A volatile counter to control context switches
 
-### Using Clang++ Directly
-
-You can also build and run each test file directly:
-
-```bash
-# Context Switching Tests
-cd fibers
-clang++ -std=c++17 test_context.cpp -o test_context
-./test_context
-
-clang++ -std=c++17 test_suite.cpp -o test_suite
-./test_suite
-
-# Reference-Counted String Tests
-cd ../my_string
-clang++ -std=c++17 test_my_string.cpp -o test_my_string
-./test_my_string
-
-# Bump Allocator Tests
-cd ../allocator
-clang++ -std=c++17 test_bump_allocator.cpp -o test_bump_allocator
-./test_bump_allocator
-```
-
-## Test Coverage
-
-### Context Switching (fibers/test_context.cpp, fibers/test_suite.cpp)
-- Basic context save/restore
-- Function execution with context switching
-- Sequential function execution
-- Data sharing between functions
-- Function sequencing with before/after states
-
-### Reference Counting (my_string/test_my_string.cpp)
-- String sharing and scope management
-- Reference count tracking
-- Copy-on-write behavior
-- Memory cleanup on reference count zero
-- Template wrapper for generic types
-
-### Memory Management (allocator/test_bump_allocator.cpp)
-- Basic allocation and usage
-- Over-allocation handling
-- Deallocation and reset functionality
-- Performance benchmarking for different allocation sizes
-
-## Usage
-
-The library provides three main functions for context switching:
-
+#### Functions
 ```cpp
-#include "fibers/context.hpp"
-
-// Save current context to ctx and return 0
-int get_context(Context* ctx);
-
-// Load context from ctx (doesn't return)
-void set_context(Context* ctx);
-
-// Save current context to old_ctx, then load context from new_ctx
-void swap_context(Context* old_ctx, Context* new_ctx);
-```
-
-### Example
-
-```cpp
-#include "fibers/context.hpp"
-#include <iostream>
-
-Context ctx;
-volatile int x = 0;
-
-if (get_context(&ctx) == 0) {
-    x++;
-    if (x < 2) {
-        std::cout << "Before context switch" << std::endl;
-        set_context(&ctx);
+int main() {
+    Context ctx;
+    volatile int x = 0;  // Mark as volatile to prevent optimization
+    
+    if (get_context(&ctx) == 0) {
+        x++;
+        if (x < 2) {
+            std::cout << "a message" << std::endl;
+            set_context(&ctx);
+        }
     }
+    std::cout << "a message" << std::endl;
+    return 0;
 }
-std::cout << "After context switch" << std::endl;
 ```
 
-## Platform-Specific Notes
+#### Key Features
+- Basic context saving and restoration
+- State preservation between switches
+- Proper optimization control
+- Simple control flow demonstration
 
-### Windows
-- Uses `__declspec(noreturn)` instead of `[[noreturn]]` for MSVC compatibility
-- Works with both MSVC and MinGW-w64 compilers
-- Tested on both x86_64 and ARM64 Windows
+### Output & Observations
+```
+a message
+a message
+```
+The output shows successful context switching with state preservation.
 
-### macOS
-- Works natively on both Intel (x86_64) and Apple Silicon (ARM64) Macs
-- Uses Clang's implementation of setjmp/longjmp
+## Task 2
 
-### Linux
-- Works on both x86_64 and ARM64 architectures
-- Compatible with both GCC and Clang compilers
+### Overview
 
-## License
+Task 2 extends the context switching mechanism by implementing custom stack management and function execution contexts.
 
-MIT License 
+### Implementation
 
-### Using CMake (Recommended)
+#### Key Components
+```cpp
+// Stack setup and management
+char data[4096];
+char* sp = data + 4096;
 
-```bash
-# Create build directory
-mkdir build
-cd build
-
-# Configure and build
-cmake ..
-make
-
-# Run all tests using CTest
-ctest --output-on-failure
+// System V ABI compliance
+sp = reinterpret_cast<char*>(
+    reinterpret_cast<uintptr_t>(sp) & ~0xFULL
+);
+sp -= 128;  // Red zone
 ```
 
-### Running All Tests at Once
+#### Technical Features
+- 4KB stack allocation
+- 16-byte stack alignment
+- 128-byte red zone
+- Function context creation
 
-After building with CMake, you can run all test executables in sequence:
-
-```bash
-# From the build directory
-./fibers/test_context && ./fibers/test_suite && ./my_string/test_my_string && ./allocator/test_bump_allocator
+### Output & Observations
 ```
-
-This will run all tests and show the complete output:
-```
-Test 1: Basic context switching
-Before context switch, x = 1
-After context switch, x = 1
-
-Test 2: Context switching between functions
-Executing foo()
-Back in main()
-
-=== Test 1.1: Save and Restore Context ===
-Message
-
-=== Test 1.2: Jump to Function ===
 you called foo
+Back in main
+```
+Demonstrates successful function execution with custom stack management.
 
-=== Test 2.1: Two Functions Sequential ===
-fiber 1
-fiber 2
+## Task 3
 
-=== Test 2.2: Function with Data ===
-fiber 1: 10
-fiber 2: 11
+### Overview
 
-=== Test 3.1: Function Sequence ===
+Task 3 implements a complete fiber scheduler that manages multiple fibers and their execution contexts.
+
+### Implementation
+
+#### Fiber Class
+```cpp
+class fiber {
+    Context context;
+    char stack[4096];
+    void (*func)();
+public:
+    fiber(void (*f)());
+    void start();
+};
+```
+
+#### Scheduler Class
+```cpp
+class scheduler {
+    std::deque<fiber*> fibers_;
+    Context context_;
+public:
+    void spawn(fiber* f);
+    void do_it();
+    void fiber_exit();
+};
+```
+
+#### Key Features
+- Fiber management
+- Round-robin scheduling
+- Resource handling
+- Context switching control
+
+### Output & Observations
+```
 fiber 1 before
 fiber 1 after
 fiber 2
+```
+Shows successful fiber scheduling and execution.
 
-=== Test 4.1: my_string Sharing and Scope ===
-[1]
-[2]
-Reference count inside scope: 2
-[1]
-Reference count after scope: 1
-HEllo world
-[0]
+## Building and Running
 
-=== Test 4.2: Reference Count Hits 0 ===
-[1]
-[2]
-Reference count after copy: 2
-[1]
-Reference count before delete: 1
-[0]
+### Prerequisites
+- CMake (3.10 or higher)
+- C++ compiler with C++11 support
+- x86_64 architecture
 
-=== Test 4.3: Template Wrapper ===
-Initial ref count: 1
-Ref count after copy: 2
-p1.x = 10, p2.x = 30
-Ref count after modification: 1
-Final ref count: 1
-
-=== Test 5.1: Allocate and Use Objects ===
-Basic allocation test passed
-
-=== Test 5.2: Over-Allocation Returns nullptr ===
-Over-allocation test passed
-
-=== Test 5.3: Dealloc + Reset ===
-Dealloc and reset test passed
-
-=== Test 6.1: Benchmark Allocations ===
-Benchmark results for 1000 iterations:
-Small allocations (8 bytes): ~10 µs
-Medium allocations (64 bytes): ~9 µs
-Large allocations (512 bytes): ~10 µs
+### Build Steps
+```bash
+mkdir build
+cd build
+cmake ..
+make
 ```
 
-### Running Individual Test Suites
-
-You can also run each test suite individually:
-
+### Running Examples
 ```bash
-# Context Switching Tests
-./fibers/test_context
-# Expected output:
-# - Test 1: Basic context switching
-# - Test 2: Context switching between functions
-
-./fibers/test_suite
-# Expected output:
-# - Test 1.1: Save and Restore Context
-# - Test 1.2: Jump to Function
-# - Test 2.1: Two Functions Sequential
-# - Test 2.2: Function with Data
-# - Test 3.1: Function Sequence
-
-# Reference-Counted String Tests
-./my_string/test_my_string
-# Expected output:
-# - Test 4.1: my_string Sharing and Scope
-# - Test 4.2: Reference Count Hits 0
-# - Test 4.3: Template Wrapper
-
-# Bump Allocator Tests
-./allocator/test_bump_allocator
-# Expected output:
-# - Test 5.1: Allocate and Use Objects
-# - Test 5.2: Over-Allocation Returns nullptr
-# - Test 5.3: Dealloc + Reset
-# - Test 6.1: Benchmark Allocations
+./examples/task1  # Basic context switching
+./examples/task2  # Stack management
+./examples/task3  # Fiber scheduler
 ```
 
-### Using Clang++ Directly
+## Project Structure
+```
+fibre-scheduler/
+  ├── allocator/
+  │   ├── bump_allocator.hpp
+  │   ├── CMakeLists.txt
+  │   └── test_bump_allocator.cpp
+  ├── examples/
+  │   ├── task1.cpp
+  │   ├── task2.cpp
+  │   └── task3.cpp
+  ├── fibers/
+  │   ├── context.hpp
+  │   └── test_context.cpp
+  └── CMakeLists.txt
+```
 
-You can also build and run each test file directly:
+## Contributing
 
-```bash
-# Context Switching Tests
-cd fibers
-clang++ -std=c++17 test_context.cpp -o test_context
-./test_context
-
-clang++ -std=c++17 test_suite.cpp -o test_suite
-./test_suite
-
-# Reference-Counted String Tests
-cd ../my_string
-clang++ -std=c++17 test_my_string.cpp -o test_my_string
-./test_my_string
-
-# Bump Allocator Tests
-cd ../allocator
-clang++ -std=c++17 test_bump_allocator.cpp -o test_bump_allocator
-./test_bump_allocator
-
-# Run all tests at once
-cd ..
-./fibers/test_context && ./fibers/test_suite && ./my_string/test_my_string && ./allocator/test_bump_allocator
-``` 
+When modifying or extending this project:
+1. Ensure proper context management
+2. Maintain stack alignment requirements
+3. Follow System V ABI specifications
+4. Add appropriate test cases
+5. Document any platform-specific considerations 
